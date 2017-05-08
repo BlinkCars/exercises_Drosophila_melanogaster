@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>计算机平台实作评价</title>
+    <link rel="Shortcut Icon" href="../../Files/Icon.ico">
+    <link rel="stylesheet" href="../../JS/Swiper-3.4.2/dist/css/swiper.min.css">
+    <style>
+    body {
+        background-color: #fff;
+        color: #000;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+    
+    section.end {
+        font-size: 72px;
+        text-align: center;
+        margin: 60px;
+        color: #fff;
+        background-color: #111;
+    }
+    
+    p {
+        margin: 2%;
+        padding: 3%;
+        background-color: #222;
+        color: white;
+    }
+    
+    .topic {
+        background-color: #333;
+        padding: 3%;
+        color: white;
+        text-indent: 2em;
+    }
+    
+    form {
+        background-color: #222;
+        margin: 0 2% 2%;
+        padding: 3%;
+        text-align: center;
+        color: white;
+    }
+    
+    input.number {
+        width: 3em;
+    }
+    
+    .t2 {
+        background-color: #222;
+        padding: 3%;
+        color: white;
+        text-align: center;
+        font-size: 2em;
+    }
+    
+    .rt {
+        padding: 5% 2% 2%;
+        margin-bottom: 0px;
+        text-align: center;
+        font-size: 12px;
+    }
+    </style>
+    <script type="text/javascript" src="../../JS/konva.min.js"></script>
+    <script type="text/javascript" src="../../JS/Swiper-3.4.2/dist/js/swiper.min.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" id="page1">
+                <div id="topic1"></div>
+            </div>
+            <div class="swiper-slide" id="page2">
+                <div id="T1">
+                    <p style=" margin:2%; border: 2px black solid; padding:0"">
+                    	<img src="Dm2.jpg" id="imageEx1" >
+                    </p>
+                    <p class="topic">
+                        一.根据郝露同学的实验，你认为她能不能证明控制黄体的基因位于X染色体上，并表现为隐性？
+                    </p>
+                    <form style="text-align: left;">
+                        <label>
+                            <input class="radio" type="radio" name="ans" value="Yes"> 能
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            <input class="radio" type="radio" name="ans" value="No"> 不能
+                        </label>
+                        <br>
+                        <br>
+                        <button type="button" onclick="ques1andtrans()">提交</button>
+                    </form>
+                    <p id="feedback1">
+                        结果：
+                    </p>
+
+                </div>
+            </div>
+            <div class="swiper-slide" id="page3">
+                <div id="trans"></div>
+            </div>
+            <div class="swiper-slide" id="page4">
+                <p class="topic">
+                    二.请你猜猜赵梦瑶同学是怎么做的。（请将实验需要的两只果蝇拖动至广口瓶，每个实验只用一个杂交组合，并指出支持赵梦瑶同学结论的预期实验结果。）
+                </p>
+                <p class="t2">
+                    杂交组合一
+                </p>
+                <p class="rt">
+                    结果预期：（请在拖动果蝇、写完预期结果之后点击“提交”）
+                </p>
+                <form class="result">
+                    <label for="proportion211">♀灰体&nbsp;&nbsp;&nbsp;&nbsp;♀黄体&nbsp;&nbsp;&nbsp;&nbsp;♂灰体&nbsp;&nbsp;&nbsp;♂黄体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
+                    <input class="number" id="proportion211" type="text" name="proportion211">
+                    <label for="proportion212">:</label>
+                    <input class="number" id="proportion212" type="text" name="proportion212">
+                    <label for="proportion213">:</label>
+                    <input class="number" id="proportion213" type="text" name="proportion213">
+                    <label for="proportion214">:</label>
+                    <input class="number" id="proportion214" type="text" name="proportion214">
+                    <button type="button" onclick="ques21()">提交</button>
+                </form>
+                <div id="topic21" style=" margin:2%; border: 2px black solid"></div>
+            </div>
+            <div class="swiper-slide" id="page5">
+                <p class="t2">
+                    杂交组合二
+                </p>
+                <p class="rt">
+                    结果预期：(请在拖动果蝇、写完预期结果之后点击“提交”）
+                </p>
+                <form class="result">
+                    <label for="proportion221">♀灰体&nbsp;&nbsp;&nbsp;&nbsp;♀黄体&nbsp;&nbsp;&nbsp;&nbsp;♂灰体&nbsp;&nbsp;&nbsp;♂黄体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
+                    <input class="number" id="proportion221" type="text" name="proportion221">
+                    <label for="proportion222">:</label>
+                    <input class="number" id="proportion222" type="text" name="proportion222">
+                    <label for="proportion223">:</label>
+                    <input class="number" id="proportion223" type="text" name="proportion223">
+                    <label for="proportion224">:</label>
+                    <input class="number" id="proportion224" type="text" name="proportion224">
+                    <button type="button" onclick="ques22()">提交</button>
+                </form>
+                <div id="topic22" style=" margin:2%; border: 2px black solid"></div>
+                <form>
+                    <button type="button" onclick="quesend()">第二大题总提交</button>
+                </form>
+                <p id="endfeedback">结果：</p>
+            </div>
+            <div class="swiper-slide" id="page6">
+                <section class="end" id="end">
+                    <p>MOGO</p>
+                </section>
+            </div>
+        </div>
+        <!-- <div class="swiper-pagination"></div> -->
+        <div class="swiper-button-prev swiper-button-black"></div>
+        <div class="swiper-button-next swiper-button-black"></div>
+    </div>
+    <script>
+    function ques1andtrans() {
+        var ans, feedback;
+        var obj = document.getElementsByName("ans");
+        for (var i = 0; i < obj.length; i++) {
+            if (obj[i].checked) {
+                ans = obj[i].value;
+            }
+        }
+        if (ans == "No") {
+            feedback = "结果：回答正确，但是郝露同学很伤心。";
+            transAmination();
+        } else if (ans == "Yes") {
+            feedback = "结果：回答错误，请检查你的答案。";
+        } else {
+            feedback = "结果：请答题";
+        }
+        document.getElementById("feedback1").innerHTML = feedback;
+    }
+    var feedback21;
+    var feedback22;
+    var ex21;
+    var ex22;
+
+    function ques21() {
+        var gF = document.getElementById("proportion211").value;
+        var yF = document.getElementById("proportion212").value;
+        var gM = document.getElementById("proportion213").value;
+        var yM = document.getElementById("proportion214").value;
+        exType21();
+        console.log(ex21);
+        if (ex21 == 2) {
+            feedback21 = parseInt(yF) == 0 && parseInt(gF) == 2 * parseInt(gM) && parseInt(gM) == parseInt(yM);
+        } else if (ex21 == 1) {
+            feedback21 = yF == 0 && gM == 0 && gF == yM;
+        } else {
+            feedback21 = false;
+        }
+    }
+
+    function ques22() {
+        var gF = document.getElementById("proportion221").value;
+        var yF = document.getElementById("proportion222").value;
+        var gM = document.getElementById("proportion223").value;
+        var yM = document.getElementById("proportion224").value;
+        exType22();
+        console.log(ex21);
+        if (ex22 == 2) {
+            feedback22 = parseInt(yF) == 0 && parseInt(gF) == 2 * parseInt(gM) && parseInt(gM) == parseInt(yM);
+        } else if (ex22 == 1) {
+            feedback22 = yF == 0 && gM == 0 && gF == yM;
+        } else {
+            feedback22 = false;
+        }
+    }
+
+    function quesend() {
+        var feedback;
+        if (feedback21 && feedback22) {
+            feedback = "结果：回答正确。";
+        } else {
+            feedback = "结果：回答错误，请检查你的答案。";
+        }
+        document.getElementById("endfeedback").innerHTML = feedback;
+    }
+    document.getElementById("imageEx1").width = window.innerWidth*0.94;
+    //Stage
+    var stage = new Konva.Stage({
+        container: 'topic1',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    var x = stage.width();
+    var y = stage.height();
+    var cenX = stage.width() / 2;
+    var cenY = stage.height() / 2;
+    var layerPic = new Konva.Layer({
+        opacity: 0
+    });
+    var imageObj = new Image();
+    var imageObjgM = new Image();
+    var imageObjyF = new Image();
+    var imageObjyM = new Image();
+    var imageObjgF = new Image();
+    var imageObjB = new Image();
+    imageObj.src = '../../Files/bug.jpg';
+    imageObjgF.src = './GF.png';
+    imageObjgM.src = './GM.png';
+    imageObjyF.src = './YF.png';
+    imageObjyM.src = './YM.png';
+    imageObjB.src = './solid_bottle.png';
+    var gf = new Konva.Image({
+        x: cenX - 100,
+        y: y / 8,
+        image: imageObjgF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var yf = new Konva.Image({
+        x: cenX,
+        y: y / 8,
+        image: imageObjyF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    layerPic.add(gf);
+    layerPic.add(yf);
+    var layerText = new Konva.Layer({});
+    var text1 = new Konva.Text({
+        x: 0,
+        y: y / 25,
+        text: '已知果蝇的灰体和黄体受一对等位基因控制',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerText.add(text1);
+    var text2 = new Konva.Text({
+        x: 0,
+        y: y / 7,
+        text: 'Aa',
+        fontSize: 72,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerText.add(text2);
+    var text3 = new Konva.Text({
+        x: 0,
+        y: y / 3,
+        text: '然而\n这对相对性状的显隐性关系\n和\n该等位基因所在的染色体\n是未知的',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerText.add(text3);
+    var text4 = new Konva.Text({
+        x: 0,
+        y: y * 4 / 6,
+        text: '因此\n郝露同学做了以下实验\n并得到图示结果',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerText.add(text4);
+    var layerEx = new Konva.Layer({
+        opacity: 0
+    });
+    stage.add(layerEx);
+    stage.add(layerPic);
+    stage.add(layerText);
+    var stageTrans = new Konva.Stage({
+        container: 'trans',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    var layerTrans = new Konva.Layer({});
+    var transText1 = new Konva.Text({
+        x: 0,
+        y: y / 8 - 48,
+        text: '郝露眼看着自己的实验\n不能达到目标',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText1);
+    var transText2 = new Konva.Text({
+        x: 0,
+        y: y / 4 - 48,
+        text: '便淹没在自己的悲伤之中\n每天以泪洗面',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText2);
+    var transText3 = new Konva.Text({
+        x: 0,
+        y: y * 3 / 8 - 48,
+        text: '她的舍友赵梦瑶\n看着日渐憔悴瘦削的郝露\n十分伤心',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText3);
+    var transText4 = new Konva.Text({
+        x: 0,
+        y: y / 2 - 32,
+        text: '于是\n抓起一把郝露在实验中获得的果蝇',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'red',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText4);
+    var transText5 = new Konva.Text({
+        x: 0,
+        y: y * 5 / 8 - 32,
+        text: '设计了两个不同的实验',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText5);
+    var transText6 = new Konva.Text({
+        x: 0,
+        y: y * 3 / 4 - 48,
+        text: '在经过了不懈的努力之后\n赵梦瑶终于证明了\n控制黄体的基因位于X染色体上\n并表现为隐性',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'red',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText6);
+    var transText7 = new Konva.Text({
+        x: 0,
+        y: y * 7 / 8 - 16,
+        text: '从此\n郝露与赵梦瑶幸福地生活在了一起',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        width: window.innerWidth,
+        fill: 'black',
+        padding: 10,
+        align: 'center',
+        opacity: 0,
+        preventDefault: false
+    });
+    layerTrans.add(transText7);
+    stageTrans.add(layerTrans);
+    var stage21 = new Konva.Stage({
+        container: 'topic21',
+        width: window.innerWidth,
+        height: window.innerHeight - 300,
+    });
+    var layerEx21 = new Konva.Layer({});
+    var gf21 = new Konva.Image({
+        x: cenX - 175,
+        y: cenY - 250,
+        image: imageObjgF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var yf21 = new Konva.Image({
+        x: cenX - 75,
+        y: cenY - 250,
+        image: imageObjyF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var gm21 = new Konva.Image({
+        x: cenX - 175,
+        y: cenY - 150,
+        image: imageObjgM,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var ym21 = new Konva.Image({
+        x: cenX - 75,
+        y: cenY - 150,
+        image: imageObjyM,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var b21 = new Konva.Image({
+        x: cenX -10,
+        y: cenY -260,
+        image: imageObjB,
+        width: 200,
+        height: 200,
+        preventDefault: false
+    });
+    layerEx21.add(b21);
+    layerEx21.add(gf21);
+    layerEx21.add(gm21);
+    layerEx21.add(yf21);
+    layerEx21.add(ym21);
+    stage21.add(layerEx21);
+    var stage22 = new Konva.Stage({
+        container: 'topic22',
+        width: window.innerWidth,
+        height: window.innerHeight - 300
+    });
+    var layerEx22 = new Konva.Layer({});
+    stage22.add(layerEx22);
+    var gf22 = new Konva.Image({
+        x: cenX - 175,
+        y: cenY - 250,
+        image: imageObjgF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var yf22 = new Konva.Image({
+        x: cenX - 75,
+        y: cenY - 250,
+        image: imageObjyF,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var gm22 = new Konva.Image({
+        x: cenX - 175,
+        y: cenY - 150,
+        image: imageObjgM,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var ym22 = new Konva.Image({
+        x: cenX - 75,
+        y: cenY - 150,
+        image: imageObjyM,
+        width: 100,
+        height: 100,
+        draggable: true
+    });
+    var b22 = new Konva.Image({
+        x: cenX -10,
+        y: cenY -260,
+        image: imageObjB,
+        width: 200,
+        height: 200,
+        preventDefault: false
+    });
+    layerEx22.add(b22);
+    layerEx22.add(gf22);
+    layerEx22.add(gm22);
+    layerEx22.add(yf22);
+    layerEx22.add(ym22);
+    stage22.add(layerEx22);
+
+    function exJudge(dmx, dmy) {
+        return dmx > cenX && dmx < x && dmy > 0 && dmy < y;
+    }
+
+    function exType21() {
+        var ym21x = ym21.getX();
+        var ym21y = ym21.getY();
+        var gm21x = gm21.getX();
+        var gm21y = gm21.getY();
+        var yf21x = yf21.getX();
+        var yf21y = yf21.getY();
+        var gf21x = gf21.getX();
+        var gf21y = gf21.getY();
+        if (exJudge(gf21x, gf21y) && !exJudge(yf21x, yf21y) && exJudge(gm21x, gm21y) && !exJudge(ym21x, ym21y)) {
+            ex21 = 2;
+        } else if (!exJudge(gf21x, gf21y) && exJudge(yf21x, yf21y) && exJudge(gm21x, gm21y) && !exJudge(ym21x, ym21y)) {
+            ex21 = 1;
+        } else {
+            ex21 = 0;
+        }
+    }
+
+    function exType22() {
+        var gf22x = gf22.getX();
+        var gf22y = gf22.getY();
+        var yf22x = yf22.getX();
+        var yf22y = yf22.getY();
+        var gm22x = gm22.getX();
+        var gm22y = gm22.getY();
+        var ym22x = ym22.getX();
+        var ym22y = ym22.getY();
+        if (exJudge(gf22x, gf22y) && !exJudge(yf22x, yf22y) && exJudge(gm22x, gm22y) && !exJudge(ym22x, ym22y)) {
+            ex22 = 2;
+        } else if (!exJudge(gf22x, gf22y) && exJudge(yf22x, yf22y) && exJudge(gm22x, gm22y) && !exJudge(ym22x, ym22y)) {
+            ex22 = 1;
+        } else {
+            ex22 = 0;
+        }
+    }
+    //Amination
+    var swiper = new Swiper('.swiper-container', {
+        onlyExternal: true,
+        prevButton: '.swiper-button-prev',
+        nextButton: '.swiper-button-next',
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+    });
+    var tweenText1 = new Konva.Tween({
+        node: text1,
+        duration: 2,
+        opacity: 1
+    });
+    tweenText1.play();
+    var tweenPic = new Konva.Tween({
+        node: layerPic,
+        duration: 2,
+        opacity: 1
+    });
+    setTimeout(function() {
+        tweenPic.play();
+    }, 1000);
+    setTimeout(function() {
+        tweenPic.reverse();
+    }, 5000);
+    var tweenText2 = new Konva.Tween({
+        node: text2,
+        duration: 2,
+        opacity: 1
+    });
+    setTimeout(function() {
+        tweenText2.play();
+    }, 5000);
+    var tweenText3 = new Konva.Tween({
+        node: text3,
+        duration: 2,
+        opacity: 1
+    });
+    setTimeout(function() {
+        tweenText3.play();
+    }, 7000);
+    var tweenText4 = new Konva.Tween({
+        node: text4,
+        duration: 2,
+        opacity: 1
+    });
+    setTimeout(function() {
+        tweenText4.play();
+    }, 10000);
+    function transAmination() {
+        var tweenTransText1 = new Konva.Tween({
+            node: transText1,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText1.play();
+        }, 1000);
+        var tweenTransText2 = new Konva.Tween({
+            node: transText2,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText2.play();
+        }, 3000);
+        var tweenTransText3 = new Konva.Tween({
+            node: transText3,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText3.play();
+        }, 5000);
+        var tweenTransText4 = new Konva.Tween({
+            node: transText4,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText4.play();
+        }, 7000);
+        var tweenTransText5 = new Konva.Tween({
+            node: transText5,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText5.play();
+        }, 9000);
+        var tweenTransText6 = new Konva.Tween({
+            node: transText6,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText6.play();
+        }, 11000);
+        var tweenTransText7 = new Konva.Tween({
+            node: transText7,
+            duration: 2,
+            opacity: 1
+        });
+        setTimeout(function() {
+            tweenTransText7.play();
+        }, 15000);
+    };
+    </script>
+</body>
